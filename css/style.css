@@ -1440,10 +1440,14 @@ canvas {
     border-top: 1px solid #26344a;
 }
 
+
 .footer p {
     color: #94a3b8;
     font-size: 13px;
+    text-align: center;
+    margin: 0;
 }
+
 
 .footer strong {
     color: #16c784;
