@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FINTRACK | Controle Financeiro</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+        
+<!-- MENU LATERAL -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="logo">
+        <h2>FIN<span>TRACK</span></h2>
+    </div>
+
+    <nav>
+        <p class="menu-title">MENU PRINCIPAL</p>
+
+        <a href="#dashboard" class="active">Dashboard</a>
+        <a href="#transactions">Transações</a>
+        <a href="#reports">Relatórios</a>
+        <a href="#budgets">Orçamentos</a>
+    </nav>
+
+</aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+<!-- BOTÃO DO MENU MOBILE -->
+<button
+    id="mobile-menu-button"
+    class="mobile-menu-button"
+    type="button"
+    aria-label="Abrir menu"
+    aria-controls="sidebar"
+    aria-expanded="false">
+    ☰
+</button>
+
+<!-- FUNDO ESCURO DO MENU -->
+<div
+    id="sidebar-overlay"
+    class="sidebar-overlay"
+    aria-hidden="true">
+</div>
+
+
+            <!-- CABEÇALHO -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Bem-vindo ao seu controle financeiro!</p>
+                </div>
+
+                <div class="user-profile">
+                    <span>Meu perfil</span>
+                </div>
+
+            </header>
+
+<!-- FILTROS DO DASHBOARD -->
+<section class="dashboard-filters">
+
+    <div>
+        <h3>Resumo financeiro</h3>
+        <p>Selecione o período que deseja analisar.</p>
+    </div>
+
+    <div class="filter-controls">
+        <label for="month-filter">Mês</label>
+        <select id="month-filter">
+            <option value="0">Janeiro</option>
+            <option value="1">Fevereiro</option>
+            <option value="2">Março</option>
+            <option value="3">Abril</option>
+            <option value="4">Maio</option>
+            <option value="5">Junho</option>
+            <option value="6">Julho</option>
+            <option value="7">Agosto</option>
+            <option value="8">Setembro</option>
+            <option value="9">Outubro</option>
+            <option value="10">Novembro</option>
+            <option value="11">Dezembro</option>
+        </select>
+
+        <label for="year-filter">Ano</label>
+        <select id="year-filter"></select>
+    </div>
+
+</section>
+
+            <!-- RESUMO FINANCEIRO -->
+            <section class="summary-cards">
+
+                <div class="card balance">
+                    <p>Saldo atual</p>
+                    <h2 id="balance-value">R$ 0,00</h2>
+                    <span>Seu saldo disponível</span>
+                </div>
+
+                <div class="card income">
+                    <p>Receitas</p>
+                    <h2 id="income-value">R$ 0,00</h2>
+                    <span>Total recebido</span>
+                </div>
+
+                <div class="card expense">
+                    <p>Despesas</p>
+                    <h2 id="expense-value">R$ 0,00</h2>
+                    <span>Total gasto</span>
+                </div>
+
+<!-- TAXA DE ECONOMIA -->
+<div class="card savings">
+    <p>Taxa de economia</p>
+    <h2 id="savings-value">0,0%</h2>
+    <span>Percentual da receita preservado</span>
+</div>
+
+            </section>
+
+            
+<!-- ÁREA DE GRÁFICOS -->
+<section class="charts-section" id="charts">
+
+<!-- ETAPA 10 - RELATÓRIOS AVANÇADOS -->
+<section class="reports-section" id="reports">
+
+    <div class="reports-header">
+
+        <div>
+            <h3>Relatório financeiro</h3>
+            <p>Análise detalhada do período selecionado.</p>
+        </div>
+
+        <button
+            id="export-csv"
+            class="csv-button"
+            type="button">
+            Exportar CSV
+        </button>
+
+    </div>
+
+    <!-- RESUMO DO RELATÓRIO -->
+    <div class="report-summary">
+
+        <div class="report-stat">
+            <span>Receitas do período</span>
+            <h3 id="report-income">R$ 0,00</h3>
+        </div>
+
+        <div class="report-stat">
+            <span>Despesas do período</span>
+            <h3 id="report-expense">R$ 0,00</h3>
+        </div>
+
+        <div class="report-stat">
+            <span>Saldo do período</span>
+            <h3 id="report-balance">R$ 0,00</h3>
+        </div>
+
+        <div class="report-stat">
+            <span>Total de transações</span>
+            <h3 id="report-count">0</h3>
+        </div>
+
+    </div>
+
+    <!-- COMPARAÇÃO MENSAL -->
+    <div class="report-comparison">
+
+        <h4>Comparação com o mês anterior</h4>
+
+        <div class="comparison-grid">
+
+            <div class="comparison-item">
+                <span>Variação das receitas</span>
+                <strong id="income-change">—</strong>
+            </div>
+
+            <div class="comparison-item">
+                <span>Variação das despesas</span>
+                <strong id="expense-change">—</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RANKING DE CATEGORIAS -->
+    <div class="report-categories">
+
+        <h4>Maiores despesas por categoria</h4>
+
+        <div id="report-category-list">
+            <p>Nenhuma despesa cadastrada.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- GRÁFICO DE RECEITAS E DESPESAS -->
+    <div class="panel chart-panel">
+
+        <div class="chart-header">
+            <div>
+                <h3>Visão financeira</h3>
+                <p>Receitas e despesas dos últimos 6 meses</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="finance-chart"></canvas>
+        </div>
+
+    </div>
+
+    <!-- GRÁFICO DE CATEGORIAS -->
+    <div class="panel chart-panel">
+
+        <div class="chart-header">
+            <div>
+                <h3>Despesas por categoria</h3>
+                <p>Distribuição dos gastos registrados</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="category-chart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ETAPA 8 - ORÇAMENTOS MENSAIS -->
+<section class="budgets-section" id="budgets">
+
+    <div class="budgets-header">
+        <div>
+            <h3>Orçamentos mensais</h3>
+            <p>Defina limites para suas despesas.</p>
+        </div>
+    </div>
+
+    <form id="budget-form" class="budget-form">
+
+        <div class="budget-field">
+            <label for="budget-category">Categoria</label>
+            <select id="budget-category" required>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Moradia">Moradia</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Outros">Outros</option>
+                <option value="Salário">Salário</option>
+            </select>
+        </div>
+
+        <div class="budget-field">
+            <label for="budget-limit">Limite mensal (R$)</label>
+            <input
+                type="number"
+                id="budget-limit"
+                placeholder="Ex: 800.00"
+                min="0.01"
+                max="999999999"
+                step="0.01"
+                required
+            >
+        </div>
+
+        <button type="submit" class="budget-save-button">
+            Salvar limite
+        </button>
+
+    </form>
+
+    <div id="budget-list" class="budget-list">
+        <p>Nenhum orçamento definido.</p>
+    </div>
+
+</section>
+
+
+            <!-- TRANSAÇÕES -->
+            
+<!-- GERENCIAMENTO DE TRANSAÇÕES -->
+<section class="transactions" id="transactions">
+
+    <div class="section-header">
+        <div>
+            <h3>Minhas transações</h3>
+            <p>Gerencie suas movimentações financeiras</p>
+        </div>
+
+
+<div class="transaction-actions">
+
+    <button
+        id="export-transactions"
+        class="export-button"
+        type="button">
+        Exportar backup
+    </button>
+
+    <button
+        id="import-transactions"
+        class="import-button"
+        type="button">
+        Importar backup
+    </button>
+
+    <!-- Seletor de arquivos oculto -->
+    <input
+        type="file"
+        id="backup-file"
+        accept=".json,application/json"
+        hidden
+    >
+
+    <button id="add-transaction" type="button">
+        + Nova transação
+    </button>
+
+</div>
+
+    </div>
+
+    <!-- BUSCA E FILTROS -->
+    <div class="transaction-filters">
+
+        <div class="search-field">
+            <label for="transaction-search">
+                Pesquisar transação
+            </label>
+
+            <input
+                type="search"
+                id="transaction-search"
+                placeholder="Ex: Salário, supermercado..."
+            >
+        </div>
+
+        <div class="category-field">
+            <label for="category-filter">
+                Categoria
+            </label>
+
+            <select id="category-filter">
+                <option value="all">Todas as categorias</option>
+                <option value="Salário">Salário</option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Moradia">Moradia</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+
+    </div>
+
+    <p class="transaction-count" id="transaction-count">
+        0 transações encontradas
+    </p>
+
+    <!-- LISTA -->
+    <div id="transaction-list">
+        <p>Nenhuma movimentação cadastrada.</p>
+    </div>
+
+</section>
+
+
+        </main>
+
+    </div>
+
+    <!-- MODAL DE NOVA TRANSAÇÃO -->
+    <div class="modal-overlay" id="transaction-modal" hidden>
+
+        <div class="modal" role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-title">
+
+            <div class="modal-header">
+                <h2 id="modal-title">Nova transação</h2>
+
+                <button id="close-modal"
+                        class="close-modal"
+                        type="button"
+                        aria-label="Fechar formulário">
+                    &times;
+                </button>
+            </div>
+
+            <form id="transaction-form">
+
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Ex: Salário, supermercado..."
+                        maxlength="80"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Valor (R$)</label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="0,00"
+                        min="0.01"
+                        max="999999999"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Tipo de transação</label>
+
+                    <select id="type" required>
+                        <option value="income">Receita</option>
+                        <option value="expense">Despesa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+
+<!-- DATA DA TRANSAÇÃO -->
+<div class="form-group">
+    <label for="transaction-date">Data da transação</label>
+
+    <input
+        type="date"
+        id="transaction-date"
+        required
+    >
+</div>
+
+                    <label for="category">Categoria</label>
+
+                    <select id="category" required>
+                        <option value="Salário">Salário</option>
+                        <option value="Alimentação">Alimentação</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Moradia">Moradia</option>
+                        <option value="Lazer">Lazer</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button"
+                            class="cancel-button"
+                            id="cancel-transaction">
+                        Cancelar
+                    
+<button type="submit"
+        class="save-button"
+        id="save-transaction">
+    Salvar transação
+</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    
+<!-- Biblioteca de gráficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+
+<!-- Nosso JavaScript -->
+<script src="../js/script.js"></script>
+
+
+</body>
+</html>
