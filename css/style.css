@@ -1429,3 +1429,23 @@ canvas {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* RODAPÉ DO FINTRACK */
+
+.footer {
+    width: 100%;
+    margin-top: 50px;
+    padding: 25px 15px;
+    text-align: center;
+    border-top: 1px solid #26344a;
+}
+
+.footer p {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.footer strong {
+    color: #16c784;
+    font-weight: 600;
+}
